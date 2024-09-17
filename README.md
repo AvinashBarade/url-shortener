@@ -1,14 +1,17 @@
 # URL Shortener Server
 
-## Start the Server Locally
+## Start the server Locally
 
-1. Make sure you have the necessary dependencies installed. You can start the Go application by running:
+1. Make sure you have the necessary dependencies installed.
+    - Go
+
+2. You can start the Go application by running:
 
         go run main.go
 
     This will start the server on `http://localhost:8080`.
 
-2. Test URL Shortening
+3. Test URL Shortening
     
     You can use curl or a tool like Postman to test the endpoints
 
@@ -51,3 +54,14 @@
         Use this command to run all the tests in your project:
 
             go test ./...
+
+## Run URL Shortener as a Docker container 
+1.  Pull the Docker Image
+    
+        docker pull avinashbarde/url-shortener:latest
+
+2. Run the Docker Container
+
+        docker run -p 8080:8080 avinashbarde/url-shortener
+
+3. Now, you can test it in local using `curl` or `postman` on port 8080
