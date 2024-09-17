@@ -8,7 +8,7 @@ import (
 	"github.com/AvinashBarade/url-shortener/utils"
 )
 
-var urlStore = make(map[string]string) // In-memory store for URLs
+var URLStore = make(map[string]string) // In-memory store for URLs
 var mu sync.Mutex                      // Mutex for concurrency control
 
 // ShortenHandler handles the URL shortening requests
@@ -20,10 +20,10 @@ func ShortenHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mu.Lock()
-	shortURL, exists := urlStore[originalURL]
+	shortURL, exists := URLStore[originalURL]
 	if !exists {
 		shortURL = utils.ShortenURL(originalURL)
-		urlStore[originalURL] = shortURL
+		URLStore[originalURL] = shortURL
 	}
 	mu.Unlock()
 

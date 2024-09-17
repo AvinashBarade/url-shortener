@@ -24,7 +24,7 @@ func RedirectHandler(w http.ResponseWriter, r *http.Request) {
 
 // Helper function to find the original URL for a given short URL
 func findOriginalURL(shortURL string) string {
-	for originalURL, short := range urlStore {
+	for originalURL, short := range URLStore {
 		if short == shortURL {
 			return originalURL
 		}

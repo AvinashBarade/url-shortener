@@ -16,7 +16,7 @@ func MetricsHandler(w http.ResponseWriter, r *http.Request) {
 	domainCount := make(map[string]int)
 
 	muMetrics.Lock()
-	for originalURL := range urlStore {
+	for originalURL := range URLStore {
 		u, _ := url.Parse(originalURL)
 		domain := strings.Split(u.Hostname(), ":")[0]
 		domainCount[domain]++
