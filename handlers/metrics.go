@@ -32,13 +32,19 @@ func MetricsHandler(w http.ResponseWriter, r *http.Request) {
 		stats = append(stats, domainStat{domain, count})
 	}
 
+	// Sort the slice by the count in descending order
 	sort.Slice(stats, func(i, j int) bool {
 		return stats[i].count > stats[j].count
 	})
 
-	// Return the top 3 domains
-	top3 := stats[:3]
-	for _, stat := range top3 {
-		fmt.Fprintf(w, "%s: %d\n", stat.domain, stat.count)
+	// Handle case where there are fewer than 3 domains
+	limit := 3
+	if len(stats) < 3 {
+		limit = len(stats)
+	}
+
+	// Return the top domains
+	for i := 0; i < limit; i++ {
+		fmt.Fprintf(w, "%s: %d\n", stats[i].domain, stats[i].count)
 	}
 }
