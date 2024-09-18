@@ -5,13 +5,16 @@
 1. Make sure you have the necessary dependencies installed.
     - Go
 
-2. You can start the Go application by running:
+2. Clone this repo into local
+        git clone git@github.com:AvinashBarade/url-shortener.git
+
+3. You can start the Go application by running:
 
         go run main.go
 
     This will start the server on `http://localhost:8080`.
 
-3. Test URL Shortening
+4. Test URL Shortening
     
     You can use curl or a tool like Postman to test the endpoints
 
@@ -49,11 +52,15 @@
             example.com: 1
             another-domain.com: 3
 
-    -  Run Unit Tests
+5. Run Unit Tests
         
-        Use this command to run all the tests in your project:
+    - Use this command to run all the tests in your project:
 
             go test ./...
+
+     - Check test coverage
+
+            go test ./... -cover   
 
 ## Run URL Shortener as a Docker container 
 1.  Pull the Docker Image
